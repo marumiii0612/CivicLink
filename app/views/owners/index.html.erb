@@ -1,0 +1,15 @@
+<head>
+    <%= stylesheet_link_tag 'login', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="wrap">
+    <div class="title">団体向け</div>
+
+  <div class="org-links">
+    <%= link_to "市民団体情報入力（新規登録）", new_group_path, class: "btn btn-org" %>
+    <%= link_to "市民団体情報編集一覧", all_path, class: "btn btn-org" %>
+    <%= link_to "イベント情報入力（新規登録）", new_event_path, class: "btn btn-org" %>
+    <%= link_to "イベント情報編集一覧", e_all_path, class: "btn btn-org" %>
+  </div>
+</div>
+</div>

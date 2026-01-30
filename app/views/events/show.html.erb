@@ -1,0 +1,88 @@
+<head>
+  <%= stylesheet_link_tag 'events', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<main class="wrap">
+    <div class="title">イベント詳細</div>
+    <p class="page-subtitle"><%= @event.event.presence || "イベント名未登録" %></p>
+
+  <section class="card">
+    <div class="card__body">
+      <div class="head-row">
+        <% if @event.genre.present? %>
+          <span class="badge"><%= @event.genre %></span>
+        <% end %>
+        <time class="created">編集：<%= l @event.created_at, format: :simple %></time>
+      </div>
+
+      <dl class="meta">
+        <% if @event.name.present? %>
+          <div class="meta__row">
+            <dt>団体名</dt>
+            <dd><%= @event.name %></dd>
+          </div>
+        <% end %>
+
+        <div class="meta__row">
+          <dt>開催日</dt>
+          <dd>
+            <% if @event.datefrom.present? %>
+              <%= l @event.datefrom, format: :simple %>
+            <% end %>
+            <% if @event.dateto.present? %>
+              〜 <%= l @event.dateto, format: :simple %>
+            <% end %>
+          </dd>
+        </div>
+
+        <% if @event.area.present? %>
+          <div class="meta__row">
+            <dt>開催エリア</dt>
+            <dd><%= @event.area %></dd>
+          </div>
+        <% end %>
+
+        <% if @event.address.present? %>
+          <div class="meta__row">
+            <dt>開催場所</dt>
+            <dd><%= @event.address %></dd>
+          </div>
+        <% end %>
+
+        <% if @event.about.present? %>
+          <div class="meta__row">
+            <dt>イベント内容</dt>
+            <dd><%= @event.about %></dd>
+          </div>
+        <% end %>
+
+        <% if @event.fee.present? %>
+          <div class="meta__row">
+            <dt>参加費</dt>
+            <dd><%= @event.fee %>円</dd>
+          </div>
+        <% end %>
+
+        <% if @event.eventurl.present? %>
+          <div class="meta__row">
+            <dt>URL</dt>
+            <dd>
+              <%= link_to @event.eventurl, @event.eventurl, target: "_blank", rel: "noopener",
+                           class: "link link--ellipsis", title: @event.eventurl %>
+            </dd>
+          </div>
+        <% end %>
+
+        <% if @event.point.present? %>
+          <div class="meta__row">
+            <dt>付与ポイント</dt>
+            <dd><%= @event.point %>P</dd>
+          </div>
+        <% end %>
+      </dl>
+    </div>
+  </section>
+  <div class="back">
+        <%= link_to "イベント一覧に戻る", events_path, class: "back-btn" %>
+      </div>
+</main>

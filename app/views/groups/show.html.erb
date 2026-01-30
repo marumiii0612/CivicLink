@@ -1,0 +1,50 @@
+<head>
+    <%= stylesheet_link_tag 'groups', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="wrap">
+  <div class="title">詳細</div>
+  <div class="card main-card">
+    <h2 class="group-name"><%= @group.name %></h2>
+    <p class="group-catch"><%= @group.catchphrase %></p>
+    <div class="section">
+      <h3 class="section-title">目的</h3>
+      <p class="section-text"><%= @group.purpose %></p>
+    </div>
+    <div class="section">
+      <h3 class="section-title">活動内容</h3>
+      <p class="section-text"><%= @group.about %></p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3 class="section-title">連絡先</h3>
+      <p><span class="label">電話番号</span><%= @group.phone %></p>
+      <p><span class="label">メールアドレス</span><%= @group.mail %></p>
+      <p><span class="label">サポセンURL</span>
+        <%= link_to @group.url, @group.url,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        class: "external-link" %></p>
+    </div>
+    <div class="card">
+      <h3 class="section-title">地域</h3>
+      <p><span class="label">活動エリア</span><%= @group.g_area %></p>
+      <p><span class="label">活動場所</span><%= @group.g_address %></p>
+    </div>
+  </div>
+  <div class="card">
+    <h3 class="section-title">基本情報</h3>
+    <div class="info-grid">
+      <p><span class="label">ジャンル</span><%= @group.genre %></p>
+      <p><span class="label">設立年</span><%= @group.establishment %>年</p>
+      <p><span class="label">正会員数</span><%= @group.menber %>名</p>
+      <p><span class="label">年齢層</span><%= @group.range %></p>
+      <p><span class="label">年会費</span><%= @group.fee_year %>円</p>
+      <p><span class="label">年間予算</span><%= @group.budget_year %></p>
+    </div>
+  </div>
+  <div class="back">
+    <%= link_to "検索に戻る", groups_path, class: "back-btn" %>
+  </div>
+</div>

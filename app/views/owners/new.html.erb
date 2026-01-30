@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <%= stylesheet_link_tag 'login', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="wrap">
+    <div class="title">管理者用</div>
+  <div class="login-container">
+    <h2>ログイン情報を入力してください</h2>
+
+    <form id="login-form" class="login-form">
+      <input type="email" id="email-input" placeholder="メールアドレス" required>
+      <input type="password" id="password-input" placeholder="パスワード" required>
+      <button type="submit">送信</button>
+    </form>
+
+    <p id="error-message" class="error-message">
+      メールアドレスまたはパスワードが間違っています。
+    </p>
+  </div>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function(e) {
+      e.preventDefault(); // ページリロード防止
+
+      const email = document.getElementById("email-input").value.trim();
+      const password = document.getElementById("password-input").value.trim();
+
+      const correctEmail = "maruyamamizuki0612@gmail.com";    // 正しいメールアドレス
+      const correctPassword = "20260203";             // 正しいパスワード
+
+      if (email === correctEmail && password === correctPassword) {
+        // 両方一致 → 遷移
+        window.location.href = "<%= owners_path %>";
+      } else {
+        // 一致しない → エラーメッセージ表示
+        document.getElementById("error-message").style.display = "block";
+      }
+    });
+  </script>
+</div>
+</html>

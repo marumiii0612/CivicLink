@@ -1,0 +1,284 @@
+/* =========================
+   全体
+========================= */
+.wrap{
+    margin: 0 auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.title{
+    margin: 10px 0;
+    font-family: 'Meiryo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    color: #003666;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================
+   ポイント概要
+========================= */
+.summary-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+.summary-card {
+  background: #f2f9ff;
+  border: 2px solid #7aa9d8;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  align-items: center;
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.15);
+}
+
+.summary-card.large {
+  padding: 30px;
+}
+
+.summary-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.point-value {
+  font-size: 36px;
+  font-weight: 700;
+  background: #fff;
+  border-radius: 30px;
+  padding: 10px;
+  margin-bottom: 16px;
+}
+
+.sub-btn {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  color: #333;
+}
+
+.summary-card.action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon-placeholder {
+    width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+/* =========================
+   セクション共通
+========================= */
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 0 16px;
+}
+
+.more-link {
+  color: #1e88e5;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* =========================
+   カード一覧
+========================= */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.card {
+  background: #fff;
+  border: 2px solid #7aa9d8;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.card-meta dt {
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.card-meta div {
+  display: flex;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================
+   フッタータグ
+========================= */
+.card-footer {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.tag {
+  border: 1px solid #7aa9d8;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+/* =========================
+   交換商品
+========================= */
+.product {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+
+  display: block;
+  margin-left: auto; 
+  margin-right: auto;
+  object-fit: contain;
+}
+
+.card.exchange img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+/* =========================
+   レスポンシブ
+========================= */
+@media (max-width: 900px) {
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.scan-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.scan-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.scan {
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* 保有ポイント表示 */
+.scan p {
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ポイント数 */
+.scan p span {
+  display: block;
+  margin-top: 6px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #f39800;
+  letter-spacing: 1px;
+}
+
+.back{
+    text-align: right;
+    margin-top: 0px;
+}
+.back-btn{
+    display: inline-block;
+    padding: 10px 24px;
+    border: 2px solid #003666;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #003666;
+    font-size: 20px;
+    font-weight: 700;
+}
+.back-btn:hover{
+    background: #003666;
+    color: #fff;
+}
+
+
+
+/* グリッド */
+.scan-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* スマホ */
+  gap: 16px;
+}
+
+/* PC以上は2列 */
+@media (min-width: 768px) {
+  .scan-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ボタンを完全に透明に */
+.scan-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* 画像中央配置 */
+.scan-image {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  border-radius: 12px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.scan-image:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.scan-image:active {
+  transform: scale(0.95);
+}

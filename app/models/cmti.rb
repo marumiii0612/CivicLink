@@ -1,0 +1,2 @@
+class Cmti < ApplicationRecord
+end

@@ -1,0 +1,71 @@
+<head>
+  <%= stylesheet_link_tag 'events', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="wrap">
+<h3 class="page-title">市民団体情報編集一覧</h3>
+<%= link_to "新規入力", new_group_path, class: "btn btn--primary btn--lg mb-4" %>
+
+<div class="card-list">
+  <% @groups.each do |f| %>
+    <div class="card">
+      <div class="card__body">
+        <h4 class="event__title"><%= f.name %></h4>
+        <% if f.catchphrase.present? %>
+          <p class="badge"><%= f.catchphrase %></p>
+        <% end %>
+
+        <dl class="meta">
+          <div class="meta__row">
+            <dt>目的</dt>
+            <dd><%= f.purpose %></dd>
+          </div>
+          <div class="meta__row">
+            <dt>概要</dt>
+            <dd><%= f.about %></dd>
+          </div>
+          <div class="meta__row">
+            <dt>連絡先</dt>
+            <dd>
+              <%= f.phone %><br>
+              <%= f.mail %><br>
+              <% if f.url.present? %>
+                <%= link_to f.url, f.url, target: "_blank", class: "link" %>
+              <% end %>
+            </dd>
+          </div>
+          <div class="meta__row">
+            <dt>地区・住所</dt>
+            <dd><%= f.g_area %> / <%= f.g_address %></dd>
+          </div>
+          <div class="meta__row">
+            <dt>ジャンル</dt>
+            <dd><%= f.genre %></dd>
+          </div>
+          <div class="meta__row">
+            <dt>設立</dt>
+            <dd><%= f.establishment %></dd>
+          </div>
+          <div class="meta__row">
+            <dt>会員数</dt>
+            <dd><%= f.menber %></dd>
+          </div>
+          <div class="meta__row">
+            <dt>活動範囲</dt>
+            <dd><%= f.range %></dd>
+          </div>
+          <div class="meta__row">
+            <dt>会費/予算</dt>
+            <dd>会費: <%= f.fee_year %> / 予算: <%= f.budget_year %></dd>
+          </div>
+        </dl>
+
+        <div class="actions mt-3">
+          <%= link_to "編集する", edit_group_path(f.id), class: "btn btn--primary btn--sm" %>
+          <%= link_to "削除する", group_path(f.id), data: { turbo_method: :delete }, class: "btn btn--ghost btn--sm" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>

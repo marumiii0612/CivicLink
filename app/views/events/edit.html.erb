@@ -1,0 +1,243 @@
+<head>
+  <%= stylesheet_link_tag 'events', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<main class="event-form-page" data-page="events-edit">
+  <div class="page-head">
+    <h3 class="page-title">イベント情報編集</h3>
+    <p class="page-desc">既存イベント情報を編集してください</p>
+  </div>
+
+  <section class="card">
+    <div class="card__body">
+      <%= form_with model: @event, local: true, class: "event-form" do |f| %>
+        <div class="grid-2">
+          <div class="field">
+            <%= f.label :name, "団体名", class: "label"%>
+            <%= f.text_field :name, size: 30, class: "input", placeholder: "例）CivicLink", required: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :event, "イベント名", class: "label" %>
+            <%= f.text_field :event, size: 30, class: "input", placeholder: "例）親子ワークショップ", required: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :genre, "ジャンル", class: "label" %>
+            <%= f.select :genre, [
+              ["保健・医療・福祉","保健・医療・福祉"],
+              ["社会教育","社会教育"],
+              ["まちづくり","まちづくり"],
+              ["観光振興","観光振興"],
+              ["農山漁村・中山間地域","農山漁村・中山間地域"],
+              ["学術・文化・芸術・スポーツ","学術・文化・芸術・スポーツ"],
+              ["環境保全","環境保全"],
+              ["災害救援","災害救援"],
+              ["地域安全","地域安全"],
+              ["人権擁護・平和推進","人権擁護・平和推進"],
+              ["国際協力","国際協力"],
+              ["男女共同参画","男女共同参画"],
+              ["子どもの健全育成","子どもの健全育成"],
+              ["情報化社会","情報化社会"],
+              ["科学技術振興","科学技術振興"],
+              ["経済の活性化","経済の活性化"],
+              ["職業能力開発","職業能力開発"],
+              ["消費者保護","消費者保護"],
+              ["活動の連絡・助言・援助","活動の連絡・助言・援助"],
+              ["その他","その他"]
+            ], { include_blank: "選択して下さい" }, class: "select", required: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :datefrom, "開始時間", class: "label" %>
+            <div class="datetime-group">
+              <%= f.datetime_select :datefrom, {}, { class: "select--inline" } %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :dateto, "終了時間", class: "label" %>
+            <div class="datetime-group">
+              <%= f.datetime_select :dateto, {}, { class: "select--inline" } %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :area, "地区名", class: "label" %>
+            <%= f.select :area, [
+              ["茅ケ崎","茅ケ崎"], ["南","南"], ["海岸","海岸"], ["南湖","南湖"], ["湘南","湘南"],
+              ["鶴嶺東","鶴嶺東"], ["鶴嶺西","鶴嶺西"], ["松林","松林"], ["小和田","小和田"],
+              ["松浪","松浪"], ["浜須賀","浜須賀"], ["湘北","湘北"], ["小出","小出"], ["茅ケ崎市外","茅ケ崎市外"]
+            ], { include_blank: "選択して下さい" }, class: "select", required: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :address, "開催場所（住所）", class: "label" %>
+            <div class="inline-row">
+              <%= f.text_field :address, size: 30, id: "address", class: "input", placeholder: "例）神奈川県茅ヶ崎市茅ヶ崎1-1-1", required: true %>
+              <button type="button" class="btn btn--ghost" onclick="codeAddress()">住所を入力したらここをクリック</button>
+            </div>
+            <p class="help">下の地図上のピンはドラッグで微調整できます</p>
+          </div>
+
+          <div class="field">
+            <%= f.label :lat, "緯度（自動入力）", class: "label" %>
+            <%= f.text_field :lat, id: "lat", class: "input input--readonly", readonly: true, required: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :lng, "経度（自動入力）", class: "label" %>
+            <%= f.text_field :lng, id: "lng", class: "input input--readonly", readonly: true, required: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :about, "イベント内容", class: "label" %>
+            <%= f.text_area :about, size: "30x4", class: "textarea", placeholder: "イベントの概要・対象・申込方法など", required: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :fee, "参加費", class: "label" %>
+            <%= f.number_field :fee, :size => 10, class: "input", placeholder: "例）0 （単位：円　省略すること）", required: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :eventurl, "イベントURL", class: "label" %>
+            <%= f.text_area :eventurl, size: "30x2", class: "textarea", placeholder: "告知ページや申込フォームのURL" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :point, "付与予定ポイント", class: "label" %>
+            <%= f.number_field :point, :size => 10, class: "input", placeholder: "例）300", required: true %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "保存", class: "btn btn--primary btn--lg" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- 地図 -->
+  <section class="card">
+    <div class="card__body">
+      <h4 class="card__title">地図（ピンはドラッグで調整できます）</h4>
+      <div id="map" class="map"></div>
+    </div>
+  </section>
+</main>
+
+<!-- Google Maps（そのまま利用） -->
+<script>
+let map, marker, geocoder, inited = false;
+
+function initMap() {
+  geocoder = new google.maps.Geocoder();
+
+  // 初期位置：茅ヶ崎
+  const CHIGASAKI = { lat: 35.3338, lng: 139.4036 };
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: CHIGASAKI,
+    zoom: 15
+  });
+  inited = true;
+
+  const latField  = document.getElementById('lat');
+  const lngField  = document.getElementById('lng');
+  const addrField = document.getElementById('address');
+
+  // 1) 既に lat/lng が入っていれば、その位置へピン
+  if (latField?.value && lngField?.value) {
+    const pos = { lat: parseFloat(latField.value), lng: parseFloat(lngField.value) };
+    placeMarker(pos);
+    map.setCenter(pos);
+  }
+
+  // Enter で検索
+  if (addrField) {
+    addrField.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        geocodeAddress(addrField.value.trim());
+      }
+    });
+    // フォーカスアウトでも検索（軽いデバウンス）
+    let t;
+    addrField.addEventListener('blur', () => {
+      clearTimeout(t);
+      t = setTimeout(() => geocodeAddress(addrField.value.trim()), 60);
+    });
+  }
+}
+
+function geocodeAddress(address) {
+  if (!inited) return;
+  const addr = (address || '').trim();
+  if (!addr) {
+    alert('住所を入力してください');
+    return;
+  }
+
+  geocoder.geocode({ address: addr, region: 'JP' }, (results, status) => {
+    if (status === 'OK' && results?.length) {
+      const best = results[0];
+      const loc = best.geometry.location;
+
+      map.setCenter(loc);
+      placeMarker(loc);
+
+      // 緯度経度をフォームへ反映
+      const lat = document.getElementById('lat');
+      const lng = document.getElementById('lng');
+      if (lat && lng) {
+        lat.value = loc.lat();
+        lng.value = loc.lng();
+      }
+
+      // 正規化された住所で上書きしたい場合は以下を有効化
+      // const addrField = document.getElementById('address');
+      // if (addrField && best.formatted_address) addrField.value = best.formatted_address;
+
+    } else if (status === 'ZERO_RESULTS') {
+      alert('該当する住所が見つかりませんでした。番地や市区町村まで含めてください。');
+    } else {
+      alert('ジオコーディングに失敗しました：' + status);
+    }
+  });
+}
+
+function placeMarker(latlng) {
+  if (marker) marker.setMap(null);
+  marker = new google.maps.Marker({
+    map,
+    position: latlng,
+    draggable: true
+  });
+
+  marker.addListener('dragend', (ev) => {
+    const pos = ev.latLng;
+    const lat = document.getElementById('lat');
+    const lng = document.getElementById('lng');
+    if (lat && lng) {
+      lat.value = pos.lat();
+      lng.value = pos.lng();
+    }
+
+    // ピン移動で住所欄も更新したい場合は逆ジオコーディングを有効化
+    // geocoder.geocode({ location: pos, region: 'JP' }, (results, status) => {
+    //   if (status === 'OK' && results?.length) {
+    //     const addrField = document.getElementById('address');
+    //     if (addrField) addrField.value = results[0].formatted_address;
+    //   }
+    // });
+  });
+}
+
+function codeAddress() {
+  const addrField = document.getElementById('address');
+  if (!addrField) return;
+  geocodeAddress(addrField.value.trim());
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUIWNKqkvOAr1SZGeISBHf4LKzkPtjQ_Q&callback=initMap" async defer></script>

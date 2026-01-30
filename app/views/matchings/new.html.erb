@@ -1,0 +1,68 @@
+<head>
+    <%= stylesheet_link_tag 'matchings', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="wrap">
+  <div class="title">相性診断</div>
+
+  <%= form_for(@matching, html: { class: 'match-form', role: 'form' }) do |f| %>
+    <div class="match-form__container">
+
+      <!-- Q1 -->
+      <fieldset class="qblock card">
+        <legend class="qblock__legend">
+          Q1 あなたが最も関心を持っているテーマはどれですか？
+        </legend>
+
+        <div class="options-grid options-grid--3">
+          <% [
+            "保健・医療・福祉","社会教育","まちづくり","観光振興","農山漁村・中山間地域",
+            "学術・文化・芸術・スポーツ","環境保全","災害救援","地域安全",
+            "人権擁護・平和推進","国際協力","男女共同参画","子どもの健全育成",
+            "情報化社会","科学技術振興","経済の活性化","職業能力開発",
+            "消費者保護","活動の連絡・助言・援助"
+          ].each_with_index do |label, i| %>
+            <label class="option">
+              <%= f.radio_button :question1, i + 1, class: "option__control", required: true %>
+              <span class="option__label"><%= label %></span>
+            </label>
+          <% end %>
+        </div>
+      </fieldset>
+
+      <!-- Q2〜Q4（同じ構造でOK） -->
+      <% [
+        ["Q2 どんな世代の人たちと活動したいですか？",
+          :question2,
+          ["学生や若者がいる","経験豊富なベテランがいる","特にこだわらない"]],
+        ["Q3 年会費がどれくらいなら参加したいですか？",
+          :question3,
+          ["無料","1円以上6,000円以下（月500円まで）","6,001円以上"]],
+        ["Q4 どのような規模の団体と関わりたいですか？",
+          :question4,
+          ["身近で和やか（年間予算50万円未満）",
+           "安定的に活動（年間予算50万以上500万円未満）",
+           "幅広く活動（年間予算500万円以上）"]]
+      ].each do |q| %>
+
+        <fieldset class="qblock card">
+          <legend class="qblock__legend"><%= q[0] %></legend>
+          <div class="options-grid options-grid--3">
+            <% q[2].each_with_index do |label, i| %>
+              <label class="option">
+                <%= f.radio_button q[1], i + 1, class: "option__control", required: true %>
+                <span class="option__label"><%= label %></span>
+              </label>
+            <% end %>
+          </div>
+        </fieldset>
+
+      <% end %>
+
+      <div class="submit-wrap">
+        <%= f.submit "診断結果を見る", class: "btn btn--matching" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>

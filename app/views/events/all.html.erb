@@ -1,0 +1,37 @@
+<head>
+  <%= stylesheet_link_tag 'events', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="wrap">
+<h2>イベント情報編集一覧</h2>
+<%= link_to "新規入力", new_event_path, class: "btn btn-primary btn-new" %>
+
+<div class="events-container">
+  <% @events.each do |f| %>
+    <div class="event-card">
+      <div class="event-header">
+        <h3 class="event-title"><%= f.name %> - <%= f.event %></h3>
+        <span class="event-genre"><%= f.genre %></span>
+      </div>
+
+      <div class="event-meta">
+        <p><strong>日時:</strong> <%= f.datefrom.strftime("%Y/%m/%d %H:%M") %> 〜 <%= f.dateto.strftime("%Y/%m/%d %H:%M") %></p>
+        <p><strong>地区:</strong> <%= f.area %></p>
+        <p><strong>住所:</strong> <%= f.address %></p>
+        <p><strong>緯度/経度:</strong> <%= f.lat %> / <%= f.lng %></p>
+        <p><strong>内容:</strong> <%= f.about %></p>
+        <p><strong>参加費:</strong> <%= f.fee %> 円</p>
+        <% if f.eventurl.present? %>
+          <p><strong>URL:</strong> <%= link_to f.eventurl, f.eventurl, target: "_blank", rel: "noopener" %></p>
+        <% end %>
+        <p><strong>付与予定ポイント:</strong> <%= f.point %></p>
+      </div>
+
+      <div class="event-actions">
+        <%= link_to "編集する", edit_event_path(f.id), class: "btn btn-edit" %>
+        <%= link_to "削除する", event_path(f.id), data: { turbo_method: :delete }, class: "btn btn-delete" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>

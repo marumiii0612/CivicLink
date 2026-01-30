@@ -1,0 +1,235 @@
+:root {
+  --civic-blue: #003366;
+  --civic-sky: #d0e9ff;
+  --civic-orange: #ff9128;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* メインコンテンツが残りの高さを使う */
+}
+
+/* =========================
+   ナビバー
+========================= */
+.civic-navbar {
+  background-color: var(--civic-sky);
+  padding: 0.5rem 1rem;
+}
+
+.site-icon {
+  width: 5rem;
+  height: auto;
+}
+
+.civic-navbar .navbar-brand,
+.civic-navbar .nav-link {
+  color: var(--civic-blue) !important;
+}
+
+.civic-title {
+  text-align: left;
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--civic-blue);
+}
+
+.civic-title .subtitle {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* ハンバーガー */
+.civic-navbar .navbar-toggler {
+  border-color: var(--civic-blue);
+}
+
+.civic-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,51,102,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* PC用ボタンリンク */
+.navbar-nav .btn-primary {
+  background-color: var(--civic-blue);
+  color: #fff;
+  border: 1px solid var(--civic-blue);
+  border-radius: 50px; /* 丸み */
+  padding: 6px 16px;
+  margin-left: 8px;
+  transition: all 0.2s ease;
+}  
+
+.navbar-nav .btn-primary:hover {
+  background-color: var(--civic-orange);
+  border-color: var(--civic-orange);
+  color: #fff;
+}
+
+/* モバイル用リンク */
+.navbar-nav .nav-link.d-lg-none {
+  color: var(--civic-blue);
+  padding: 8px 0;
+  font-weight: 600;
+}
+
+.navbar-nav .nav-link.d-lg-none:hover {
+  color: var(--civic-orange);
+  text-decoration: none;
+}
+
+/* モバイル展開時の背景 */
+.collapse.navbar-collapse {
+  background-color: var(--civic-sky);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.collapse.navbar-collapse .nav-item {
+  margin-bottom: 8px;
+}
+
+/* PCではフラット表示 */
+@media screen and (min-width: 992px) {
+  .collapse.navbar-collapse {
+    background-color: transparent;
+    padding: 0;
+    margin-top: 0;
+  }
+  .collapse.navbar-collapse .nav-item {
+    margin-bottom: 0;
+  }
+}
+
+/* =========================
+   ヘッダー固定
+========================= */
+header {
+  position: sticky;
+  top: 0;
+  height: 95px;
+  color: white;
+  align-content: center;
+  z-index: 2000;
+}
+
+/* =========================
+   フッター
+========================= */
+.footer{
+  width: 100%;
+}
+
+.civic-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px 30px;
+  background-color: var(--civic-blue);
+  color: #fff;
+  font-family: 'Meiryo', sans-serif;
+  margin-top: 40px;
+}
+
+.footer-left {
+  max-width: 400px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.footer-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.footer-icon img {
+  width: 28px;
+  height: auto;
+}
+
+.footer-title {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.footer-subtitle {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.footer-copyright {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.footer-right {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.footer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-nav li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-nav li a:hover {
+  color: var(--civic-orange);
+}
+
+/* スマホ対応：左と右を縦並びに */
+@media screen and (max-width: 768px) {
+  .civic-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-right {
+    justify-content: flex-start;
+    margin-top: 16px;
+  }
+  .footer-nav {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+

@@ -1,0 +1,113 @@
+
+/* =========================
+   背景 & コンテナ
+========================= */
+
+.wrap{
+    margin: 0 auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+.title{
+    margin: 10px 0;
+    font-family: 'Meiryo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    color: #003666;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.login-container {
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  width: 100%;
+  text-align: center;
+}
+
+/* =========================
+   タイトル
+========================= */
+.login-container h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 24px;
+}
+
+/* =========================
+   フォーム
+========================= */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form input {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  transition: all 0.2s ease;
+}
+
+.login-form input:focus {
+  border-color: #003366;
+  outline: none;
+}
+
+/* =========================
+   ボタン
+========================= */
+.login-form button {
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #003366;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.login-form button:hover {
+  background-color: #ff9128;
+}
+
+/* =========================
+   エラーメッセージ
+========================= */
+.error-message {
+  color: #ff0000;
+  margin-top: 12px;
+  font-size: 14px;
+  display: none;
+}
+
+.org-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* ボタン間の余白 */
+}
+
+.btn-org {
+  display: inline-block;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background-color: #003366;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-org:hover {
+  background-color: #ff9128;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}

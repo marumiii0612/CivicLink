@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  catchphrase: MyString
+  purpose: MyText
+  about: MyText
+  phone: MyString
+  mail: MyString
+  g_area: MyString
+  g_address: MyString
+  genre: MyString
+  establishment: 1
+  menber: 1
+  range: MyString
+  fee_year: 1
+  budget_year: MyString
+  url: MyString
+
+two:
+  name: MyString
+  catchphrase: MyString
+  purpose: MyText
+  about: MyText
+  phone: MyString
+  mail: MyString
+  g_area: MyString
+  g_address: MyString
+  genre: MyString
+  establishment: 1
+  menber: 1
+  range: MyString
+  fee_year: 1
+  budget_year: MyString
+  url: MyString

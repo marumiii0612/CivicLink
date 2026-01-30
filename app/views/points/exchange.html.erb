@@ -1,0 +1,47 @@
+<head>
+    <%= stylesheet_link_tag 'points', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="wrap">
+    <div class="title">ポイント交換</div>
+
+<% @points.each do |point| %>
+  <div class="scan" id="point-<%= point.id %>">
+    <p>保有ポイント<span><%= point.point %></span></p>
+
+    <div class="scan-grid">
+    <%= button_to sub_point_path(point),
+          method: :post,
+          remote: true,
+          class: "scan-button" do %>
+      <%= image_tag "kayama2.png", alt: "スキャン", class: "scan-image" %>
+    <% end %>
+
+    <%= button_to sub_point_path(point),
+          method: :post,
+          remote: true,
+          class: "scan-button" do %>
+      <%= image_tag "kuwata2.png", alt: "スキャン", class: "scan-image" %>
+    <% end %>
+
+    <%= button_to sub_point_path(point),
+          method: :post,
+          remote: true,
+          class: "scan-button" do %>
+      <%= image_tag "noguchi2.png", alt: "スキャン", class: "scan-image" %>
+    <% end %>
+
+    <%= button_to sub_point_path(point),
+          method: :post,
+          remote: true,
+          class: "scan-button" do %>
+      <%= image_tag "ken2.png", alt: "スキャン", class: "scan-image" %>
+    <% end %>
+    </div>
+  </div>
+<% end %>
+
+  <div class="back">
+    <%= link_to "戻る", points_path, class: "back-btn" %>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+<head>
+    <%= stylesheet_link_tag 'points', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="wrap">
+
+  <!-- ===== ポイント概要 ===== -->
+  <section class="point-summary">
+    <div class="title">ポイント</div>
+
+    <div class="summary-grid">
+      <!-- 保有ポイント -->
+      <div class="summary-card large">
+        <p class="summary-title">保有ポイント</p>
+        <div class="point-value">
+          <%= @points.sum(:point) %> <span>P</span>
+        </div>
+        <%= link_to "ポイント履歴", points_path, class: "sub-btn" %>
+      </div>
+
+      <!-- スキャン -->
+    <%= link_to scan_points_path, class: "summary-card action" do %>
+        <p class="summary-title">スキャン</p>
+        <%= image_tag "qr.png", alt: "QRコード", class: "icon-placeholder" %>
+    <% end %>
+
+      <!-- ポイント交換 -->
+      <%= link_to exchange_points_path, class: "summary-card action" do %>
+        <p class="summary-title">ポイント交換</p>
+        <%= image_tag "point.png", alt: "ポイント", class: "icon-placeholder" %>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- ===== イベント一覧 ===== -->
+  <section class="point-events">
+    <div class="section-head">
+      <h2 class="section-title">イベント一覧</h2>
+      <%= link_to "もっと見る", events_path, class: "more-link" %>
+    </div>
+
+    <ul class="card-grid">
+        <li class="card">
+          <h3 class="card-title">イベント名</h3>
+
+          <dl class="card-meta">
+            <div><dt>団体名</dt><dd>団体名</dd></div>
+            <div><dt>開催日</dt><dd>年-月-日</dd></div>
+            <div><dt>概要</dt><dd class="ellipsis">イベント概要がここに記載されます。</dd></div>
+          </dl>
+
+          <div class="card-footer">
+            <span class="tag">ポイント：???P</span>
+            <span class="tag">ジャンル</span>
+          </div>
+        </li>
+
+        <li class="card">
+          <h3 class="card-title">イベント名</h3>
+
+          <dl class="card-meta">
+            <div><dt>団体名</dt><dd>団体名</dd></div>
+            <div><dt>開催日</dt><dd>年-月-日</dd></div>
+            <div><dt>概要</dt><dd class="ellipsis">イベント概要がここに記載されます</dd></div>
+          </dl>
+
+          <div class="card-footer">
+            <span class="tag">ポイント：???P</span>
+            <span class="tag">ジャンル</span>
+          </div>
+        </li>
+    </ul>
+  </section>
+
+  <!-- ===== ポイント交換 ===== -->
+  <section class="point-exchange">
+    <div class="section-head">
+      <h2 class="section-title">ポイント交換</h2>
+      <%= link_to "もっと見る", exchange_points_path, class: "more-link" %>
+    </div>
+
+    <ul class="card-grid">
+    <%= link_to exchange_points_path, class: "card-link" do %>
+      <li class="card exchange">
+        <h3 class="card-title">加山雄三オリジナルカード</h3>
+        <%= image_tag "kayama.png", alt: "ポイント", class: "product" %>
+        <span class="tag">必要ポイント：3,000P</span>
+      </li>
+    <% end %>
+    <%= link_to exchange_points_path, class: "card-link" do %>
+      <li class="card exchange">
+        <h3 class="card-title">桑田佳祐ボイスアラーム音</h3>
+        <%= image_tag "kuwata.png", alt: "ポイント", class: "product" %>
+        <span class="tag">必要ポイント：3,000P</span>
+      </li>
+    <% end %>
+    <%= link_to exchange_points_path, class: "card-link" do %>
+      <li class="card exchange">
+        <h3 class="card-title">野口聡一が選ぶ非常食セット</h3>
+        <%= image_tag "noguchi.png", alt: "ポイント", class: "product" %>
+        <span class="tag">必要ポイント：3,000P</span>
+      </li>
+    <% end %>
+    <%= link_to exchange_points_path, class: "card-link" do %>
+      <li class="card exchange">
+        <h3 class="card-title">市内加盟店舗割引券</h3>
+        <%= image_tag "ken.png", alt: "ポイント", class: "product" %>
+        <span class="tag">必要ポイント：3,000P</span>
+      </li>
+    <% end %>
+    </ul>
+  </section>
+
+</div>
+
+

@@ -1,0 +1,140 @@
+/* =========================
+   全体レイアウト
+========================= */
+
+.wrap{
+    margin: 0 auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.title{
+    margin: 10px 0;
+    font-family: 'Meiryo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    color: #003666;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.match-form__container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.qblock {
+  background: #f4f9ff;
+  border: 1.5px solid #3f6fb5;
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.12);
+}
+
+.qblock__legend {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0b3a67;
+  margin-bottom: 16px;
+}
+
+/* =========================
+   選択肢グリッド
+========================= */
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  gap: 24px;
+}
+
+/* =========================
+   option（丸）
+========================= */
+
+.option {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.option__control {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 丸の見た目 */
+.option__label {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid #0b3a67;
+  background: white;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+/* 中央（どちらでもない） */
+.option:nth-child(3) .option__label {
+  border-color: #ccc;
+}
+
+/* 右側（そう思わない側） */
+.option:nth-child(n+4) .option__label {
+  border-color: #ff8a00;
+}
+
+/* =========================
+   checked状態
+========================= */
+
+.option__control:checked + .option__label {
+  background: currentColor;
+}
+
+.option:nth-child(-n+2) {
+  color: #0b3a67;
+}
+
+.option:nth-child(3) {
+  color: #ccc;
+}
+
+.option:nth-child(n+4) {
+  color: #ff8a00;
+}
+
+/* =========================
+   ホバー
+========================= */
+
+.option__label:hover {
+  transform: scale(1.1);
+}
+
+/* =========================
+   送信ボタン
+========================= */
+
+.submit-wrap {
+    display: flex;
+    justify-content: center;
+  text-align: center;
+  margin-top: 32px;
+}
+
+.btn--primary {
+  font-size: 22px;
+  padding: 14px 48px;
+  border-radius: 14px;
+  background: #0b3a67;
+  color: #fff;
+  border: none;
+}
+
+.eboshi{
+    width: 100%;
+}

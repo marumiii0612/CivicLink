@@ -1,0 +1,113 @@
+<head>
+    <%= stylesheet_link_tag 'statics', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="hero-section">
+    <div class="hero-inner container-fluid">
+        <div class="hero-text">
+            <h2>
+                <span class="underline">関心を、参加へ。</span><br>
+                <span class="underline">参加を、繋がりへ。</span>
+            </h2>
+            <p class="hero-sub">
+                まちの<span class="accent">今</span>が、見える。<br>
+                あなたの<span class="accent">関心</span>が、見つかる。<br>
+                今日の<span class="accent">一歩</span>が、つながりになる。
+            </p>
+        </div>
+        <div class="hero-images">
+            <%= image_tag "aloha.png" %>
+            <%= image_tag "sea.png" %>
+        </div>
+    </div>
+    <div class="wave">
+        <%= image_tag "wave.svg", alt: "", aria: { hidden: true } %>
+    </div>
+</div>
+<section class="about-section">
+  <div class="container">
+    <h2 class="section-title">CivicLinkとは？</h2>
+    <p class="about-lead">
+      該当自治体で活動される方々（在住・通勤・通学）を対象に、
+      地域課題への入口を分かりやすく紹介し、市民自治の活性化を図る総合サイトです。
+    </p>
+    <h3 class="section-subtitle">CivicLinkの背景</h3>
+    <div class="background-cards">
+      <div class="bg-card">
+        <h4>Ⅰ 市民自治の物理的・心理的コストが高い</h4>
+        <p>
+          時間や場所、人間関係を気にする声や、情報へのアクセス性の向上を望む声がある。
+          「市に対する思いが強い市民が集まるイメージが強い」との意見もみられる。
+        </p>
+        <p class="reference">
+          参考：茅ヶ崎市（2025）「茅ヶ崎市市民参加条例の施行状況に関する検証」
+        </p>
+      </div>
+      <div class="bg-card">
+        <h4>Ⅱ 興味分野の発見が難しい</h4>
+        <p>
+          自分が関心のあるテーマが分からない市民が多い。
+          「隠れた市民の思い」を抽出し、生かす仕組みが求められる。
+          茅ヶ崎市民活動サポートセンターの公式サイトでは、
+          活動場所や活動日の検索が難しいという課題がある。
+        </p>
+        <p class="reference">
+          参考：茅ヶ崎市（2025）「茅ヶ崎市市民参加条例の施行状況に関する検証」<br>
+          　　　茅ヶ崎市民活動サポートセンター「ちがさきサポセン」
+        </p>
+      </div>
+    </div>
+    <h3 class="section-subtitle">CivicLinkの目的</h3>
+    <ul class="purpose-list">
+      <li>市民自治に関する情報アクセスのコストを低下</li>
+      <li>新規性あるサイトを開発</li>
+    </ul>
+    <p class="purpose-message">
+      ➡地域課題に対して <span class="accent">主体的に</span> 取り組む市民を育成し、
+      <span class="accent">潜在的なニーズ</span>を引き出し、今後の市政運営に活用します。
+    </p>
+  </div>
+</section>
+
+<div class="cards">
+<%= link_to groups_path, class: "group-card" do %>
+  <%= image_tag "kensaku.png", alt: "検索", class: "top" %>
+  <div class="explain">
+    市民団体の検索機能<br>
+    「団体名」「ジャンル」「キャッチフレーズ」でサクッと検索
+  </div>
+<% end %>
+
+<%= link_to new_matching_path, class: "group-card" do %>
+  <%= image_tag "aisho.png", alt: "相性診断", class: "top" %>
+  <div class="explain">
+    市民団体との相性診断機能<br>
+    4つの質問に答え、相性の良い団体をおすすめ
+  </div>
+<% end %>
+
+<%= link_to events_path, class: "group-card" do %>
+  <%= image_tag "event.png", alt: "イベントマップ", class: "top" %>
+  <div class="explain">
+    市民団体のイベントマップ機能<br>
+    市民団体のイベントを地図と一覧で表示    
+  </div>
+<% end %>
+
+<%= link_to new_citizen_path, class: "group-card" do %>
+  <%= image_tag "point3.png", alt: "ポイント", class: "top" %>
+  <div class="explain">
+    イベント参加後のポイント機能<br>
+    イベント参加後に、QRコードを読み込み、ポイント獲得
+  </div>
+<% end %>
+
+<%= link_to new_cmti_path, class: "group-card" do %>
+  <%= image_tag "cmti.png", alt: "えぼし麻呂", class: "top" %>
+  <div class="explain">
+    MBTI風診断機能「Civic-Mind Type Indicator」<br>
+    日常生活に関する質問に答え、16タイプに分類
+  </div>
+<% end %>
+
+
+

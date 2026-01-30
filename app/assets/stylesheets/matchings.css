@@ -1,0 +1,226 @@
+/* =========================
+   共通レイアウト
+========================= */
+
+.wrap {
+  margin: 0 auto;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+/* =========================
+   タイトル
+========================= */
+
+.title,
+.match-result__title {
+  margin: 10px 0 20px;
+  font-family: 'Meiryo';
+  font-weight: 700;
+  font-size: 48px;
+  color: #f39800;
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   ===== 診断フォーム画面 =====
+========================= */
+
+.match-form__container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* 質問カード */
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 22px 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.qblock {
+  border: none;
+}
+
+.qblock__legend {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+/* 選択肢グリッド */
+
+.options-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.options-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .options-grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ラジオボタン */
+
+.option {
+  position: relative;
+}
+
+.option__control {
+  position: absolute;
+  opacity: 0;
+}
+
+.option__label {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #ddd;
+  background: #fafafa;
+  font-size: 18px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option__label:hover {
+  background: #fff3e6;
+  border-color: #f39800;
+}
+
+.option__control:checked + .option__label {
+  background: #fff0db;
+  border-color: #f39800;
+  font-weight: 600;
+}
+
+.submit-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* =========================
+   ===== 診断結果画面 =====
+========================= */
+
+/* 導入文（囲わない） */
+
+.intoro p {
+  color: #f39800;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 10px 0 20px;
+}
+
+/* 結果カード */
+
+.matching-container {
+  background: #fff7ec;
+  border: 2px solid #f39800;
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+
+/* カテゴリ見出し */
+
+.matching-container h6 {
+  margin: 0;
+  padding: 14px 18px 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #f39800;
+  border-bottom: 1px solid #f6c37a;
+}
+
+/* 団体名 */
+
+.matching-container p {
+  margin: 0;
+  padding: 8px 18px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.matching-container p:last-child {
+  padding-bottom: 16px;
+}
+
+/* =========================
+   あなたの選択
+========================= */
+
+.match-result__lead {
+  margin: 30px 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #f39800;
+}
+
+/* =========================
+   チップ
+========================= */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+
+.chip {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #fff3e0;
+  border: 1.5px solid #f39800;
+  font-size: 14px;
+  font-weight: 600;
+  color: #f39800;
+}
+
+/* =========================
+   ボタン（共通）
+========================= */
+
+.btn--matching {
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn--matching {
+  background: #f39800;
+  color: #fff;
+}
+
+.btn--matching:hover {
+  background: #fb8c00;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* ボタン配置 */
+
+.result-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}

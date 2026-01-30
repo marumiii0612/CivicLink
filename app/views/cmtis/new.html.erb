@@ -1,0 +1,148 @@
+<head>
+    <%= stylesheet_link_tag 'cmtis', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="wrap">
+    <div class="title">Civic-Mind Type Indicator</div>
+
+<%= form_for(@cmti, html: { class: 'match-form', role: 'form' }) do |f| %>
+  <div class="match-form__container">
+
+    <!-- Q1 -->
+    <fieldset class="qblock">
+      <legend class="qblock__legend">
+        Q1 行政は生活の一部だ
+      </legend>
+
+      <div class="options-grid options-grid--3">
+        <label class="option">
+          <%= f.radio_button :question1, "1", id: "q1_1", class: "option__control", required: true %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question1, "2", id: "q1_2", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question1, "3", id: "q1_3", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question1, "4", id: "q1_4", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question1, "5", id: "q1_5", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- Q2 -->
+    <fieldset class="qblock">
+      <legend class="qblock__legend">
+        Q2 市に対して不満がある
+      </legend>
+
+      <div class="options-grid options-grid--3">
+        <label class="option">
+          <%= f.radio_button :question2, "1", id: "q2_1", class: "option__control", required: true %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question2, "2", id: "q2_2", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question2, "3", id: "q2_3", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question2, "4", id: "q2_4", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question2, "5", id: "q2_5", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- Q3 -->
+    <fieldset class="qblock">
+      <legend class="qblock__legend">
+        Q3 若い世代と一緒に活動したい
+      </legend>
+      <div class="options-grid options-grid--3">
+        <label class="option">
+          <%= f.radio_button :question3, "1", id: "q3_1", class: "option__control", required: true %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question3, "2", id: "q3_2", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question3, "3", id: "q3_3", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question3, "4", id: "q3_4", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question3, "5", id: "q3_5", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- Q4 -->
+    <fieldset class="qblock">
+      <legend class="qblock__legend">
+        Q4 市民団体に所属する場合、年会費はゼロが良い
+      </legend>
+      <div class="options-grid options-grid--3">
+        <label class="option">
+          <%= f.radio_button :question4, "1", id: "q4_1", class: "option__control", required: true %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question4, "2", id: "q4_2", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question4, "3", id: "q4_3", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question4, "4", id: "q4_4", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+        <label class="option">
+          <%= f.radio_button :question4, "5", id: "q4_5", class: "option__control" %>
+          <span class="option__label"></span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- Submit -->
+    <div class="submit-wrap">
+      <%= f.submit "結果を見る", class: "btn btn--primary" %>
+    </div>
+
+    <!-- （任意）エラーメッセージ -->
+    <% if @cmti && @cmti.errors.any? %>
+      <div class="form-errors" role="alert" aria-live="polite">
+        <p><strong>入力内容をご確認ください。</strong></p>
+        <ul>
+          <% @cmti.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  </div>
+<% end %>
+</div>

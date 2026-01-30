@@ -1,0 +1,156 @@
+<head>
+  <%= stylesheet_link_tag 'events', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="wrap">
+    <div class="title">イベントマップ</div>
+
+<main class="emap">
+  <!-- 検索 -->
+  <section class="search">
+    <div class="explain">イベントを検索</div>
+    <label class="column">イベント検索</h3>
+    <%= form_with url: events_path, method: :get,
+              class: "search-form", role: "search", local: true do %>
+  <div class="search-form__row">
+    <%= text_field_tag :search, params[:search],
+          class: "input",
+          placeholder: "イベント名、団体名、内容を入力" %>
+    <div class="actions">
+            <%= submit_tag '検索', class: "bluebtn" %>
+            <%= link_to '条件をクリア', events_path, class: 'whitebtn' %>
+    </div>
+  </div>
+<% end %>
+  </section>
+
+<!-- マップ -->
+  <section class="map-wrap">
+    <div id="map" class="map"></div>
+  </section>
+</main>
+
+<!-- 既存のJSはそのまま -->
+<script>
+  function initMap() {
+    let latlng = new google.maps.LatLng(35.3338, 139.4036);
+
+    let styles = [{ stylers: [{ "saturation": 0 }, { "lightness": 0 }] }];
+
+    let map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      styles: styles,
+      center: latlng
+    });
+
+    let transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    // マーカー
+    <% @events.each do |event| %>
+      (function() {
+        let markerLatLng = { lat: <%= event.lat || 0 %>, lng: <%= event.lng || 0 %> };
+        let marker = new google.maps.Marker({ position: markerLatLng, map: map });
+        let infowindow = new google.maps.InfoWindow({
+          position: markerLatLng,
+          content: "<a href='<%= event_url(event.id) %>' target='_blank'><%= j(event.name.to_s) %></a>"
+        });
+        marker.addListener('click', function() { infowindow.open(map, marker); });
+      })();
+    <% end %>
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUIWNKqkvOAr1SZGeISBHf4LKzkPtjQ_Q&callback=initMap" async defer></script>
+
+
+
+
+
+
+  <!-- 見出し -->
+    <div class="result">
+        <div class="result-title">検索結果</div>
+        <% if @events.present? %>
+            <div class="count"><%= @events.size %>件</div>
+        <% end %>
+    </div>
+
+  <!-- 一覧 -->
+ <section class="events">
+  <% if @events.present? %>
+    <ul class="card-list">
+      <% @events.each do |f| %>
+        <li class="card event">
+          <%= link_to event_path(f.id), class: "card-link" do %>
+            <div class="card__body">
+
+              <div class="event__head">
+                <h4 class="event__title"><%= f.event.presence || "イベント名未登録" %></h4>
+                <% if f.genre.present? %>
+                  <span class="badge"><%= f.genre %></span>
+                <% end %>
+              </div>
+
+              <dl class="meta">
+                <% if f.name.present? %>
+                  <div class="meta__row">
+                    <dt>団体名</dt>
+                    <dd class="ellipsis-1"><%= f.name %></dd>
+                  </div>
+                <% end %>
+
+                <div class="meta__row">
+                  <dt>開催日</dt>
+                  <dd>
+                    <% if f.datefrom.present? %>
+                      <%= l f.datefrom, format: :simple %>
+                    <% end %>
+                    <% if f.dateto.present? %>
+                      〜 <%= l f.dateto, format: :simple %>
+                    <% end %>
+                  </dd>
+                </div>
+
+                <% if f.address.present? %>
+                  <div class="meta__row">
+                    <dt>開催場所</dt>
+                    <dd class="ellipsis-1"><%= f.address %></dd>
+                  </div>
+                <% end %>
+
+                <% if f.about.present? %>
+                  <div class="meta__row">
+                    <dt>概要</dt>
+                    <dd class="ellipsis-2"><%= f.about %></dd>
+                  </div>
+                <% end %>
+
+                <% if f.fee.present? %>
+                  <div class="meta__row">
+                    <dt>参加費</dt>
+                    <dd class="ellipsis-2"><%= f.fee %>円</dd>
+                  </div>
+                <% end %>
+
+                <% if f.point.present? %>
+                  <div class="meta__row">
+                    <dt>付与ポイント</dt>
+                    <dd class="ellipsis-2"><%= f.point %>P</dd>
+                  </div>
+                <% end %>
+              </dl>
+
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div class="empty">
+      <p>該当するイベントがありません。</p>
+      <p class="empty__hint">キーワードを変えて再検索してみてください。</p>
+    </div>
+  <% end %>
+</section>
+</div>
+  

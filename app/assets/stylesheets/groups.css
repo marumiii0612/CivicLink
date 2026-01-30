@@ -1,0 +1,231 @@
+.wrap{
+    margin: 0 auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+.title{
+    margin: 10px 0;
+    font-family: 'Meiryo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    color: #003666;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.search{
+    padding: 10px;
+    box-sizing: border-box;
+    background: #F2F9FF;
+    border: 1px solid #003666;
+    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+.explain{
+    font-family: 'Meiryo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    color: #003666;
+}
+.column{
+    font-family: 'Meiryo';
+    font-size: 18px;
+    display: block;
+    margin-top: 12px;
+}
+.actions{
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;    
+}
+.bluebtn{
+    background: #003666;
+    color: white;
+    border-radius: 30px;
+    font-family: 'Meiryo';
+    font-style: normal;
+    font-size: 24px;
+    padding: 10px 20px;
+}
+.bluebtn:hover{
+    background: white;
+    color: #003666;
+}
+.whitebtn{
+    border: 2px solid #003666;
+    color: #003666;
+    background: white;    
+    border-radius: 30px;
+    font-family: 'Meiryo';
+    font-style: normal;
+    font-size: 24px;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-left: auto;
+    display: inline-block;
+}
+.whitebtn:hover{
+    background: #003666;
+    color: white;
+}
+.input{
+    border: 1px solid #D9D9D9;
+    border-radius: 15px;
+    font-family: 'Meiryo';
+    font-style: normal;
+    font-size: 20px;
+    padding: 5px;
+    width: 100%;
+}
+.result{
+    margin: 15px 0;
+    display: flex;
+    align-items: flex-end;
+}
+.result-title{
+    font-family: 'Meiryo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    color: #003666;
+}
+.count{
+    font-family: 'Meiryo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #82a7c7;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+.container{
+    display: grid;
+    gap: 5px;
+}
+.group-card{
+    display: block;
+    padding: 16px 20px;
+    background: #ffffff;
+    border: 1px solid #003666;
+    border-radius: 16px;
+    text-decoration: none;
+    color: #003666;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+    min-width: 0; 
+}
+.group-card:hover{
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.25);
+    transform: translateY(-2px);
+}
+.group-name{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.group-catch{
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;   /* ← 2行 */
+    overflow: hidden;
+}
+.group-genre{
+    font-size: 14px;
+    color: #82a7c7;
+}
+@media (min-width: 768px){
+    .container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+
+.card{
+    background: #F2F9FF;
+    border: 1px solid #003666;
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.15);
+}
+.main-card{
+    background: #F2F9FF;
+}
+.group-name{
+    font-size: 28px;
+    font-weight: 700;
+    color: #003666;
+    margin-bottom: 8px;
+}
+.group-catch{
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.section{
+    margin-bottom: 0px;
+}
+.section-title{
+    font-size: 20px;
+    font-weight: 700;
+    color: #003666;
+    margin-bottom: 8px;
+}
+.section-text{
+    font-size: 16px;
+    line-height: 1.7;
+}
+.label{
+    display: inline-block;
+    width: 110px;
+    font-weight: 400;
+    color: black;
+}
+.grid{
+    display: grid;
+    gap: 20px;
+}
+@media (min-width: 768px){
+    .grid{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.info-grid{
+    display: grid;
+    gap: 10px;
+}
+@media (min-width: 768px){
+    .info-grid{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.back{
+    text-align: right;
+    margin-top: 30px;
+}
+.back-btn{
+    display: inline-block;
+    padding: 10px 24px;
+    border: 2px solid #003666;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #003666;
+    font-size: 20px;
+    font-weight: 700;
+}
+.back-btn:hover{
+    background: #003666;
+    color: #fff;
+}
+
+
+
+

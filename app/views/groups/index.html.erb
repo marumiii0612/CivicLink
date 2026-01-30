@@ -1,0 +1,48 @@
+<head>
+    <%= stylesheet_link_tag 'groups', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="wrap">
+    <div class="title">検索</div>
+    <div class="search">
+        <div class="explain">
+        市民団体を検索<br>
+        （項目１つ以上入力してください）
+        </div>
+        <%= form_tag(groups_path, method: :get, class: "search-form", role: "search") do %>
+        <label class="column">団体名</label>
+            <%= text_field_tag :name, params[:name], id: "group_name", class: "input", placeholder: "例）PuHU、こども応援丸 など" %><br>
+        <label class="column">ジャンル</label>
+            <% genre_options = defined?(@genres) && @genres.present? ? @genres : Group.distinct.where.not(genre: [nil, ""]).order(:genre).pluck(:genre) %>
+            <%= select_tag :genre,
+            options_for_select(genre_options, params[:genre]),
+            include_blank: '選択してください',
+            id: "group_genre",
+            class: "input" %><br>
+        <label class="column">キーワード</label>
+            <%= text_field_tag :keyword, params[:keyword], id: "group_keyword", class: "input", placeholder: "例）子育て、健康、福祉…" %><br>
+        <div class="actions">
+            <%= submit_tag '検索', class: "bluebtn" %>
+            <%= link_to '条件をクリア', groups_path, class: 'whitebtn' %>
+        </div>
+        <% end %>  
+    </div>
+    <div class="result">
+        <div class="result-title">検索結果</div>
+        <% if @groups.present? %>
+            <div class="count"><%= @groups.size %>件（全421件）</div>
+        <% end %>
+    </div>
+    <div class="container">
+    <% @groups.each do |f| %>
+        <%= link_to group_path(f), class: "group-card" do %>
+        <div class="group-name"><%= f.name %></div>
+        <div class="group-catch"><%= f.catchphrase %></div>
+        <div class="group-genre"><%= f.genre %></div>
+        <% end %>
+    <% end %>
+    </div>
+</div>
+
+
+

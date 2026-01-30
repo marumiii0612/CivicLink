@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  event: MyString
+  genre: MyString
+  datefrom: 2026-01-29 03:49:57
+  dateto: 2026-01-29 03:49:57
+  area: MyString
+  address: MyString
+  lat: 1.5
+  lng: 1.5
+  about: MyText
+  fee: 1
+  eventurl: MyText
+  point: 1
+
+two:
+  name: MyString
+  event: MyString
+  genre: MyString
+  datefrom: 2026-01-29 03:49:57
+  dateto: 2026-01-29 03:49:57
+  area: MyString
+  address: MyString
+  lat: 1.5
+  lng: 1.5
+  about: MyText
+  fee: 1
+  eventurl: MyText
+  point: 1

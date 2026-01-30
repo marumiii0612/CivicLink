@@ -1,0 +1,13 @@
+<head>
+    <%= stylesheet_link_tag 'cmtis', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<div class="wrap">
+    <div class="title">CMTI結果</div>
+<%= image_tag "eboshi.png", alt: "えぼし麻呂", class: "eboshi" %>
+
+生成AIより出力
+<div class="submit-wrap">
+<%= link_to "もう１度診断する", new_cmti_path, class: "btn btn--primary" %>
+</div>
+</div>
