@@ -25,7 +25,7 @@ class PointsController < ApplicationController
     end
     def add
         @point = Point.find(params[:id])
-        @point.increment!(:point, 200)
+        @point.increment!(:point, 500)
         respond_to do |format|
             format.html { redirect_to scan_points_path }
             format.json { render json: { new_point: @point.point, id: @point.id } }
